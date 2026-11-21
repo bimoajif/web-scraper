@@ -1,6 +1,6 @@
 
 import io
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 
 import pandas as pd
 import plotly.express as px
@@ -56,7 +56,7 @@ def get_total_records():
 def get_trends(days=7, sources=None, search=None):
     """Retrieve trends based on the selected filters."""
 
-    cutoff = datetime.utcnow() - timedelta(days=days)
+    cutoff = datetime.now(UTC) - timedelta(days=days)
 
     with SessionLocal() as session:
 
