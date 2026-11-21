@@ -7,6 +7,7 @@ load_dotenv()
 from db import init_db
 from collectors.common import run_collector
 from collectors.suarakalbar import collect as suarakalbar
+from collectors.antaranews import collect as antaranews
 
 
 def main():
@@ -17,7 +18,7 @@ def main():
 
     parser.add_argument(
         "--source",
-        choices=["all", "suarakalbar"],
+        choices=["all", "suarakalbar", "antaranews"],
         default="all"
     )
 
@@ -26,7 +27,8 @@ def main():
     init_db()
 
     jobs = {
-        "suarakalbar": suarakalbar
+        "suarakalbar": suarakalbar,
+        "antaranews": antaranews
     }
 
     selected = (
