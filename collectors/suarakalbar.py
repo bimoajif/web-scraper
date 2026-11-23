@@ -6,6 +6,7 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 from lxml import html
+from classifiers.topics import classify_topics
 
 from db import init_db, save_trends
 
@@ -156,11 +157,16 @@ def main(limit=100, pages_per_index=3):
 
                 article = get_soup(link)
 
+                classification = classify_topics(
+                    article.get("title", ""),
+                    article.get("content", "")
+                )
+
                 if article:
                     # Add database metadata
                     article.update({
                         "source": "suarakalbar",
-                        "topic": None,
+                        "topic": classification["topic"],
                         "category": "Regional",
                         "region": get_region(index_url),
                         "trend_score": 0,
