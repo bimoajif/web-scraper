@@ -1,4 +1,3 @@
-
 import time
 from urllib.parse import urljoin
 
@@ -77,7 +76,7 @@ def get_soup(url, retries=3):
 
             title = (
                 soup.title.get_text(strip=True)
-                .rsplit("– ANTARANEWS.COM", 1)[0].strip()
+                .rsplit("- ANTARA News Kalimantan Barat", 1)[0].strip()
                 if soup.title else None
             )
 
