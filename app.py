@@ -246,7 +246,9 @@ with tab1:
                 counts,
                 x="Source",
                 y="Records",
-                title="Data collection distribution"
+                title="Data collection distribution",
+                color="Source",
+                color_discrete_sequence=px.colors.qualitative.Set2
             )
 
             st.plotly_chart(
@@ -275,12 +277,16 @@ with tab1:
                 x="Mentions",
                 y="Topic",
                 orientation="h",
-                title="Top 15 topics"
+                title="Top 15 topics",
+                color="Mentions",
+                color_continuous_scale=px.colors.sequential.Viridis,
+
             )
 
             st.plotly_chart(
                 fig,
-                width='stretch'
+                width='stretch',
+                
             )
 
         # ----------------------------------
@@ -303,7 +309,9 @@ with tab1:
                 region_counts,
                 x="Region",
                 y="Records",
-                title="Regional distribution"
+                title="Regional distribution",
+                color="Region",
+                color_continuous_scale=px.colors.sequential.Plasma
             )
 
             st.plotly_chart(
