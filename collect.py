@@ -8,6 +8,7 @@ from db import init_db
 from collectors.common import run_collector
 from collectors.suarakalbar import collect as suarakalbar
 from collectors.antaranews import collect as antaranews
+from collectors.twitter import collect as twitter
 
 
 def main():
@@ -18,7 +19,7 @@ def main():
 
     parser.add_argument(
         "--source",
-        choices=["all", "suarakalbar", "antaranews"],
+        choices=["all", "suarakalbar", "antaranews", "twitter"],
         default="all"
     )
 
@@ -28,7 +29,8 @@ def main():
 
     jobs = {
         "suarakalbar": suarakalbar,
-        "antaranews": antaranews
+        "antaranews": antaranews,
+        "twitter": twitter
     }
 
     selected = (
